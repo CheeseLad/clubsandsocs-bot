@@ -13,11 +13,5 @@ RUN npm install
 # Copy the rest of the application code to the working directory
 COPY . .
 
-# Set an environment variable 
-ENV API_PORT=5000
-
-# Expose the port that the app will run on
-EXPOSE 5000
-
 # Tell docker what command will start the application
 CMD [ "npm", "start" ]
