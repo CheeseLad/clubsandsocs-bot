@@ -1,6 +1,6 @@
 require('dotenv').config();
 const axios = require('axios');
-const { Client, IntentsBitField, EmbedBuilder } = require('discord.js');
+const { Client, IntentsBitField, EmbedBuilder, ActivityType } = require('discord.js');
 
 const client = new Client({
   intents: [
@@ -13,6 +13,13 @@ const client = new Client({
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
+
+  client.user.setActivity({
+    name: 'Clubs and Socs',
+    type: ActivityType.Listening,
+    url: 'https://clubsandsocs.jakefarrell.ie',
+  });
+
 });
 
 client.on('interactionCreate', async (interaction) => {

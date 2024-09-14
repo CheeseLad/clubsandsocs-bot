@@ -64,13 +64,23 @@ const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_TOKEN);
   try {
     console.log('Started refreshing application (/) commands.');
 
+    if (process.env.DISCORD_GUILD_ID) {
+      await rest.put(
+        Routes.applicationGuildCommands(process.env.DISCORD_CLIENT_ID, process.env.DISCORD_GUILD_ID),
+        { body: commands }
+      );
+      console.log('Successfully reloaded application (/) guild commands.');
+    } else {
+      console.warn('No GUILD ID provided, skipping guild command registration.');
+    }
+
     await rest.put(
-      Routes.applicationGuildCommands(process.env.DISCORD_CLIENT_ID, process.env.DISCORD_GUILD_ID),
-      { body: commands },
+      Routes.applicationCommands(process.env.DISCORD_CLIENT_ID),
+      { body: commands }
     );
 
-    console.log('Successfully reloaded application (/) commands.');
+    console.log('Successfully reloaded application (/) global commands.');
   } catch (error) {
-    console.error(error);
+    console.error('Error refreshing commands:', error);
   }
 })();
