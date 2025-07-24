@@ -20,9 +20,19 @@ const commands = [
     options: [
       {
         name: 'type',
-        description: '`club` or `society`',
+        description: 'Select club or society',
         type: 3,
         required: true,
+        choices: [
+          {
+            name: 'Club',
+            value: 'club'
+          },
+          {
+            name: 'Society',
+            value: 'society'
+          }
+        ]
       },
       {
         name: 'name',
@@ -44,15 +54,59 @@ const commands = [
     options: [
       {
         name: 'type',
-        description: '`club` or `society`',
+        description: 'Select club or society',
         type: 3,
         required: true,
+        choices: [
+          {
+            name: 'Club',
+            value: 'club'
+          },
+          {
+            name: 'Society',
+            value: 'society'
+          }
+        ]
       },
       {
         name: 'name',
         description: 'The name of the club or society',
         type: 3,
         required: true,
+      },
+    ],
+  },
+  {
+    name: 'gallery',
+    description: 'Get gallery images',
+    options: [
+      {
+        name: 'type',
+        description: 'Select club or society',
+        type: 3,
+        required: true,
+        choices: [
+          {
+            name: 'Club',
+            value: 'club'
+          },
+          {
+            name: 'Society',
+            value: 'society'
+          }
+        ]
+      },
+      {
+        name: 'name',
+        description: 'The name of the club or society',
+        type: 3,
+        required: true,
+      },
+      {
+        name: 'limit',
+        description: 'The number of images to show (max 10)',
+        type: 4,
+        required: false,
       },
     ],
   }
